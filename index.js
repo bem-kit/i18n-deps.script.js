@@ -44,7 +44,7 @@ const JsonStringifyAsJs = (obj, indent) => JSON.stringify(obj, null, indent || 4
 //
 
 // todo: отделить специфику
-// https://github.yandex-team.ru/lego/islands/blob/dev/index.js
+// yandex github /lego/islands/blob/dev/index.js
 const getLevels = require('.').getLevels;
 const levels    = _(getLevels()).values().flatten().map('path').uniq().value();
 const techs     = ['js', 'bemhtml.js'];
