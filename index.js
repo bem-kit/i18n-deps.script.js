@@ -13,6 +13,7 @@
 
 require('shelljs/global');
 const _         = require('lodash');
+const includes  = require('array-includes');
 
 const fs        = require('then-fs');
 const read      = path => fs.readFile(path, 'utf8');
@@ -26,6 +27,7 @@ const isexist   = require('isexist');
 const through   = require('through');
 const throughPass = fn => through(function(value) { fn(value); this.queue(value); });
 
+const walk      = require('bem-walk');
 const bemNaming = require('bem-naming');
 const bemParse  = bemNaming.parse;
 const bemOmit   = (bemObj, omitParts) => {
@@ -55,42 +57,38 @@ const isDryRun = process.argv[2] === 'dry-run';
 // functions
 //
 
-const getI18nUsingFiles = (levels, techs) => {
-    // let bemFind = require('bem-tools-find');
-    // const stringify = require('JSONStream').stringify;
-    const walk      = require('bem-walk');
-    const includes  = require('array-includes');
-
-    // simple bem-find
-    const bemFind = (query, levels, scheme) => {
-        const techs = _.flatten([query.tech]);
-        const config = {
-            levels: _(levels).invert().mapValues(function() {
-                return { scheme: scheme || 'nested' };
-            }).value()
-        };
-
-        const filterTech = through(json => includes(techs, json.tech) && filterTech.queue(json));
-        const pluckPathAndTech = through(json => pluckPathAndTech.queue(_.pick(json, ['path', 'tech'])));
-
-        return walk(levels, config) // returns stream
-            .pipe(filterTech)
-            .pipe(pluckPathAndTech);
+// simple bem-find
+const bemFind = (query, levels, scheme) => {
+    const techs = _.flatten([query.tech]);
+    const config = {
+        levels: _(levels).invert().mapValues(function() {
+            return { scheme: scheme || 'nested' };
+        }).value()
     };
 
-    const filterI18n = through(fileData => {
-        filterI18n.pause();
-        read(fileData.path)
-            .then(file => {
-                filterI18n.resume();
-                /BEM\.I18N/.test(file) && filterI18n.queue(fileData)
-            })
-            .catch(e => {
-                console.error('filterI18n reject', e);
-                filterI18n.resume().queue();
-            });
-    });
+    const filterTech = through(json => includes(techs, json.tech) && filterTech.queue(json));
+    const pluckPathAndTech = through(json => pluckPathAndTech.queue(_.pick(json, ['path', 'tech'])));
 
+    return walk(levels, config) // returns stream
+        .pipe(filterTech)
+        .pipe(pluckPathAndTech);
+};
+
+const filterI18n = through(fileData => {
+    filterI18n.pause();
+    read(fileData.path)
+        .then(file => {
+            filterI18n.resume();
+            /BEM\.I18N/.test(file) && filterI18n.queue(fileData)
+        })
+        .catch(e => {
+            console.error('filterI18n reject', e);
+            filterI18n.resume().queue();
+        });
+});
+
+
+const getI18nUsingFiles = (levels, techs) => {
     // debug
     isDebug && console.log(techs);
     isDebug && console.log(JSON.stringify(levels));
