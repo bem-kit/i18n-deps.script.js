@@ -7,8 +7,8 @@ Add i18n dependencies for blocks which use `BEM.I18N`
 ## usage
 `node i18n-deps.js`
 
-verbose mode
+#### verbose mode
 `node i18n-deps.js debug`
 
-print changes to stdout, not modify deps-files
+#### print changes to stdout, not modify deps-files
 `node i18n-deps.js dry-run`
