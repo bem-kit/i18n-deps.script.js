@@ -1,0 +1,30 @@
+{
+  "name": "i18n-deps.script.js",
+  "version": "1.0.0",
+  "description": "Add i18n dependencies for blocks which use `BEM.I18N`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bem-kit/i18n-deps.script.js.git"
+  },
+  "author": "invntrm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bem-kit/i18n-deps.script.js/issues"
+  },
+  "homepage": "https://github.com/bem-kit/i18n-deps.script.js#readme",
+  "dependencies": {
+    "array-includes": "^3.0.2",
+    "bem-naming": "^1.0.1",
+    "bem-walk": "^1.0.0-1",
+    "isexist": "^0.1.1",
+    "lodash": "^4.12.0",
+    "path": "^0.12.7",
+    "shelljs": "^0.7.0",
+    "then-fs": "^2.0.0",
+    "through": "^2.3.8"
+  }
+}
