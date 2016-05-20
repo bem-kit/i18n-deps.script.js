@@ -8,15 +8,27 @@ Add i18n dependencies for blocks which use `BEM.I18N`
 Зависимость от ядра I18N здесь не проставляется, но необходима
 
 ## Configure
-Tune config for your project (setup levels source and platforms dirs regexp [e.g.: `desktop.blocks`, `images/blocks-desktop`]).
+Tune config for your project (setup levels source and platforms dirs regexp [e.g.: `desktop.blocks`, `blocks-desktop`]).
 
 https://github.com/bem-kit/i18n-deps.script.js/blob/master/config.js
 
 ## Usage
+Run at project level (platforms root).
+If your repository contains a few projects then run the util at every project.
+
+e.g. `cd ~/fiji/images && ls && node i18n-deps.js`:
+```
+blocks-desktop
+blocks-touch-phone
+...
+```
+
+#### run
+
 `node i18n-deps.js`
 
-#### verbose mode
+#### run in verbose mode
 `node i18n-deps.js debug`
 
-#### print changes to stdout, not modify deps-files
+#### print changes to stdout, do not modify deps-files
 `node i18n-deps.js dry-run`
