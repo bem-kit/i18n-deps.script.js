@@ -16,7 +16,7 @@ https://github.com/bem-kit/i18n-deps.script.js/blob/master/config.js
 Run at project level (platforms root).
 If your repository contains a few projects then run the util at every project.
 
-e.g. `cd ~/fiji/images && ls && node i18n-deps.js`:
+e.g. `cd ~/fiji/images && ls && node path/to/i18n-deps.js`:
 ```
 blocks-desktop
 blocks-touch-phone
@@ -25,10 +25,10 @@ blocks-touch-phone
 
 #### run
 
-`node i18n-deps.js`
+`node path/to/i18n-deps.js`
 
 #### run in verbose mode
-`node i18n-deps.js debug`
+`node path/to/i18n-deps.js debug`
 
 #### print changes to stdout, do not modify deps-files
-`node i18n-deps.js dry-run`
+`node path/to/i18n-deps.js dry-run`
