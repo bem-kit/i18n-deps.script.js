@@ -43,15 +43,14 @@ const JsonStringifyAsJs = (obj, indent) => JSON.stringify(obj, null, indent || 4
 // configuration
 //
 
-// todo: отделить специфику
-// yandex github /lego/islands/blob/dev/index.js
-const getLevels = require('.').getLevels;
-const levels    = _(getLevels()).values().flatten().map('path').uniq().value();
-const techs     = ['js', 'bemhtml.js'];
-const platformRe= /([a-zA-Z-]+)\.blocks/;
+const config     = require('./config');
 
-const isDebug = process.argv[2] === 'debug';
-const isDryRun = process.argv[2] === 'dry-run';
+const levels     = config.levels;
+const techs      = config.techs;
+const platformRe = config.platformRe;
+
+const isDebug    = process.argv[2] === 'debug';
+const isDryRun   = process.argv[2] === 'dry-run';
 
 //
 // functions
@@ -59,7 +58,7 @@ const isDryRun = process.argv[2] === 'dry-run';
 
 // simple bem-find
 const bemFind = (query, levels, scheme) => {
-    const techs = _.flatten([query.tech]);
+    const techs  = _.flatten([query.tech]);
     const config = {
         levels: _(levels).invert().mapValues(function() {
             return { scheme: scheme || 'nested' };
@@ -98,12 +97,12 @@ const getI18nUsingFiles = (levels, techs) => {
 };
 
 const processDepsFile = (sourceData) => {
-    const sourcePath= sourceData.path;
-    const tech      = sourceData.tech;
-    const bemName   = baseBemName(sourcePath);
-    const bemObj    = bemParse(bemName);
+    const sourcePath = sourceData.path;
+    const tech       = sourceData.tech;
+    const bemName    = baseBemName(sourcePath);
+    const bemObj     = bemParse(bemName);
     const bemEntityForNearestI18nDir = findBemEntityForNearestI18nDir(sourcePath);
-    const depsFilePath  = `${dirname(sourcePath)}/${bemName}.deps.js`;
+    const depsFilePath = `${dirname(sourcePath)}/${bemName}.deps.js`;
 
     read(depsFilePath)
         .then(content => {
