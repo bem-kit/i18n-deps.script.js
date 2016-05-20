@@ -8,7 +8,7 @@ Add i18n dependencies for blocks which use `BEM.I18N`
 Зависимость от ядра I18N здесь не проставляется, но необходима
 
 ## Configure
-Fork and change config: levels source, platform regexp.
+Tune config for your project (setup levels source and platforms dirs regexp [e.g.: `desktop.blocks`, `images/blocks-desktop`]).
 
 https://github.com/bem-kit/i18n-deps.script.js/blob/master/config.js
 
