@@ -3,24 +3,16 @@ const _ = require('lodash');
 // Levels source example: yandex github /lego/islands/blob/dev/index.js
 // example getLevels() from lego:
 ({ desktop:
-   [ { path: '/Users/invntrm/lego/islands/common.blocks',
-       check: true },
-     { path: '/Users/invntrm/lego/islands/desktop.blocks',
-       check: true } ],
+   [ { path: '/Users/invntrm/lego/islands/common.blocks', check: true },
+     { path: '/Users/invntrm/lego/islands/desktop.blocks', check: true } ],
   'touch-phone':
-   [ { path: '/Users/invntrm/lego/islands/common.blocks',
-       check: true },
-     { path: '/Users/invntrm/lego/islands/touch.blocks',
-       check: true },
-     { path: '/Users/invntrm/lego/islands/touch-phone.blocks',
-       check: true } ],
+   [ { path: '/Users/invntrm/lego/islands/common.blocks', check: true },
+     { path: '/Users/invntrm/lego/islands/touch.blocks', check: true },
+     { path: '/Users/invntrm/lego/islands/touch-phone.blocks', check: true } ],
   'touch-pad':
-   [ { path: '/Users/invntrm/lego/islands/common.blocks',
-       check: true },
-     { path: '/Users/invntrm/lego/islands/touch.blocks',
-       check: true },
-     { path: '/Users/invntrm/lego/islands/touch-pad.blocks',
-       check: true } ] });
+   [ { path: '/Users/invntrm/lego/islands/common.blocks', check: true },
+     { path: '/Users/invntrm/lego/islands/touch.blocks', check: true },
+     { path: '/Users/invntrm/lego/islands/touch-pad.blocks', check: true } ] });
 
 const getLevels  = require(process.cwd()).getLevels; // cwd = project root
 
