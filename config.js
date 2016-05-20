@@ -22,7 +22,7 @@ const _ = require('lodash');
      { path: '/Users/invntrm/lego/islands/touch-pad.blocks',
        check: true } ] });
 
-const getLevels  = require('.').getLevels; // . = project root
+const getLevels  = require(process.cwd()).getLevels; // cwd = project root
 
 module.exports = {
   levels: _(getLevels()).values().flatten().map('path').uniq().value(),
