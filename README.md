@@ -7,7 +7,11 @@ Add i18n dependencies for blocks which use `BEM.I18N`
 
 Зависимость от ядра I18N здесь не проставляется, но необходима
 
-## usage
+## Configure
+Fork and change config: levels source, platform regexp.
+https://github.com/bem-kit/i18n-deps.script.js/blob/master/index.js#L42-L54
+
+## Usage
 `node i18n-deps.js`
 
 #### verbose mode
