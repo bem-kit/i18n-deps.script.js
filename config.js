@@ -1,7 +1,7 @@
 const _ = require('lodash');
 
 // Levels source example: yandex github /lego/islands/blob/dev/index.js
-const getLevels  = require('.').getLevels;
+const getLevels  = require('.').getLevels; // . = project root
 
 module.exports = {
   levels: _(getLevels()).values().flatten().map('path').uniq().value(),
